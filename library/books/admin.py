@@ -11,8 +11,14 @@ class Member(ImportExportMixin, admin.ModelAdmin):
     list_filter = ["created_at"]
 
 
+class BookEvent(admin.TabularInline):
+    model = BookEvent
+    extra = 1
+
+
 @admin.register(Book)
 class Book(ImportExportMixin, admin.ModelAdmin):
     list_display = ["name", "num_of_copies"]
     search_fields = ["name"]
     list_filter = ["created_at"]
+    inlines = [BookEvent]
