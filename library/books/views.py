@@ -21,13 +21,3 @@ class MemberList(generics.ListCreateAPIView):
 class MemberDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Member.objects.all()
     serializer_class = MemberSerializer
-
-
-class BookEventList(generics.ListCreateAPIView):
-    queryset = BookEvent.objects.all()
-    serializer_class = BookEventSerializer
-
-
-class BookEventDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = BookEvent.objects.all()
-    serializer_class = BookEventSerializer

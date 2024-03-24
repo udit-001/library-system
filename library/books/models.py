@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 
 
 class Member(models.Model):
@@ -16,23 +17,21 @@ class Book(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+
     def __str__(self):
         return self.name
 
 
-class EventType(models.TextChoices):
-    CHECKOUT = "checkout", "Checkout"
-    RETURN = "return", "Return"
-    RESERVE = "reserve", "Reserve"
-    FULFILL = "fulfill", "Fulfill"
-
-
-class BookEvent(models.Model):
-    event_type = models.CharField(max_length=20, choices=EventType.choices)
-    book = models.ForeignKey("books.Book", on_delete=models.CASCADE)
+class Reservation(models.Model):
     member = models.ForeignKey("books.Member", on_delete=models.CASCADE)
-    date = models.DateField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    book = models.ForeignKey("books.Book", on_delete=models.CASCADE)
+    reservation_date = models.DateField()
+    fulfillment_date = models.DateField()
 
-    def __str__(self):
-        return f"{self.member} - {self.event_type} - {self.book}"
+
+class Checkout(models.Model):
+    member = models.ForeignKey("books.Member", on_delete=models.CASCADE)
+    book = models.ForeignKey("books.Book", on_delete=models.CASCADE)
+    checkout_date = models.DateField()
+    due_date = models.DateField()
+    return_date = models.DateField()

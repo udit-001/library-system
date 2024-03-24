@@ -13,9 +13,3 @@ class MemberSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = ["id", "name"]
-
-
-class BookEventSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = BookEvent
-        fields = ["id", "member", "book", "event_type"]
