@@ -21,10 +21,10 @@ class Book(models.Model):
 
 
 class EventType(models.TextChoices):
-    CHECKOUT = "Checkout", "Checkout"
-    RETURN = "Return", "Return"
-    RESERVE = "Reserve", "Reserve"
-    FULFILL = "Fulfill", "Fulfill"
+    CHECKOUT = "checkout", "Checkout"
+    RETURN = "return", "Return"
+    RESERVE = "reserve", "Reserve"
+    FULFILL = "fulfill", "Fulfill"
 
 
 class BookEvent(models.Model):
